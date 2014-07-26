@@ -17,6 +17,10 @@ board.on("ready", function() {
   var left_wheel  = new five.Servo({ pin:  9, type: 'continuous' }).stop();
   var right_wheel = new five.Servo({ pin: 10, type: 'continuous'  }).stop();
 
+  var perfect_angle = 100;
+  var attack_angle = 0;
+  var sweeper = new five.Servo({ pin: 6, type: 'standard' }).to(perfect_angle);
+
 
   process.stdin.resume(); 
   process.stdin.setEncoding('utf8'); 
@@ -63,6 +67,12 @@ board.on("ready", function() {
       left_wheel.stop();
       right_wheel.stop();
 
+    } else if ( key.name == 's' ) {
+      sweeper.to(attack_angle);
+      setTimeout(function(){
+        console.log('stopping sweep');
+        sweeper.to(perfect_angle);
+      }, 800);
     }
 
 
