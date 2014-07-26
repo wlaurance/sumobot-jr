@@ -69,10 +69,8 @@ board.on("ready", function() {
 
     } else if ( key.name == 's' ) {
       sweeper.to(attack_angle);
-      setTimeout(function(){
-        console.log('stopping sweep');
-        sweeper.to(perfect_angle);
-      }, 800);
+    } else if ( key.name == 'd' ) {
+      sweeper.to(perfect_angle);
     }
 
 
